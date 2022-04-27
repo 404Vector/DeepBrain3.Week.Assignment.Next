@@ -12,7 +12,7 @@ export default function Profile({ id }) {
     const router = useRouter()
     const [user, setUser] = useState({})
     useEffect(() => {
-        alert('>>' + id)
+        //alert('>>' + id)
         axios.get(`http://localhost:5050/api/user/profile/${id}`).then(res => {
             setUser(res.data.user)
         }).catch(err => {

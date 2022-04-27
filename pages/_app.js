@@ -1,5 +1,5 @@
 import {Layout} from "./common";
-//import { wrapper } from '../redux/store.ts'
+import { wrapper } from '../redux/store.ts'
 import Head from 'next/head'
 const App = ({ Component, pageProps}) => {
   return (<>
@@ -9,7 +9,7 @@ const App = ({ Component, pageProps}) => {
       content="width=device-width, user-scalable=no, 
       initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></meta>
       <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-      <title>HyeongSeok Kim's App</title>
+      <title>Hyeongseok Kim's App</title>
     </Head>
     <Layout>
       <Component {...pageProps} />
@@ -17,4 +17,5 @@ const App = ({ Component, pageProps}) => {
     </>
   )
 }
-export default App
+
+export default wrapper.withRedux(App)
