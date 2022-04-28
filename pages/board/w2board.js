@@ -2,15 +2,20 @@ import Head from "next/head"
 import tableStyles from "../../styles/table.module.css"
 import { useEffect, useState } from "react"
 import axios from "axios"
+import { useDispatch } from 'react-redux';
 
 export default function BoardList() {
     const columns = ["Library Name", "Book Name", "Author", "Publisher", "Published Year", "Data Base Date"]
     const [data, setData] = useState([])
     const titleString = "서울특별시 강서구 강서구립도서관 신착도서 목록".normalize('NFC');
     useEffect(() => {
-        axios.get('http://localhost:5050/api/board/list').then(res => {
-            setData(res.data.boards)
-        }).catch(err => { })
+        axios.get('http://localhost:5050/bookInfo/getBookInfos').then(res => {
+            setData(res.data)
+            const t = JSON.parse(data)
+            alert(t.bookName)
+        }).catch(err => { 
+            alert('w2board::'+err)
+        })
     }, [])
 
     return (
@@ -26,23 +31,28 @@ export default function BoardList() {
             </thead>
             <tbody>
                 <tr>
-                    {columns.map((column) => (
-                        <td key={column} >{column}</td>
+                    {columns.map((column, index) => (
+                        <td key={index} >{column}</td>
                     ))}
                 </tr>
                 {data.length == 0 ? <tr >
                     <td colSpan={6} >게시글 없음</td>
                 </tr>
-                    : data.map((board) => (
-                        <tr key={board.libraryName}>
-                            <td >{board.libraryName}</td>
-                            <td >{board.bookName}</td>
-                            <td >{board.author}</td>
-                            <td >{board.publisher}</td>
-                            <td >{board.publisherYear}</td>
-                            <td >{board.dataBaseDate}</td>
+                    : data.map((bookInfo) => {
+                        alert(JSON.parse(bookInfo))
+                        (
+
+                            <tr key={bookInfo.bookName}>
+                            <td >{bookInfo.libName}</td>
+                            <td >{bookInfo.bookName}</td>
+                            <td >{bookInfo.author}</td>
+                            <td >{bookInfo.publisher}</td>
+                            <td >{bookInfo.publisherYear}</td>
+                            <td >{bookInfo.dataBaseDate}</td>
                         </tr>
-                    ))}
+                            )
+                        }
+                    )}
             </tbody>
         </table>
     )

@@ -24,8 +24,8 @@ export default function Nav(){
     }else{
       //setUserUrls(["/user/logout","/user/profile","/user/modifyUser","/user/withdrawUser","/user/getUsers"])
       //setUserSubTitle(["로그아웃","프로필","회원수정","회원탈퇴","회원목록"])
-      setUserUrls(["/user/logout","/user/profile"])
-      setUserSubTitle(["로그아웃","프로필"])
+      setUserUrls(["/user/logout","/user/profile","/user/userList"])
+      setUserSubTitle(["로그아웃","프로필","회원목록"])
     }
   },[])
 

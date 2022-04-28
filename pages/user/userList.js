@@ -8,7 +8,7 @@ export default function UserList(){
     const columns = ["사용자ID", "이름", "이메일", "전화번호", "생년월일", "주소"];
     const [data, setData] = useState([])
     useEffect(()=>{
-      axios.get('http://localhost:5000/api/user/list').then(res=>{
+      axios.get('http://localhost:5050/user/getUsers').then(res=>{
         setData(res.data.users)
       }).catch(err=>{})
     },[])
