@@ -1,6 +1,6 @@
 import {all} from 'redux-saga/effects'
 import { watchJoin, watchLogin, watchLogout } from './userSaga.ts'
-import { watchJoinBookInfo, watchDelUser } from './bookInfoSaga.ts'
+import { watchJoinBookInfo, watchUpdateBookInfo , watchDeleteBookInfo } from './bookInfoSaga.ts'
 
 
 export default function* rootSaga(){
@@ -9,7 +9,8 @@ export default function* rootSaga(){
         watchLogin(), 
         watchLogout(),
         watchJoinBookInfo(),
-        watchDelUser(),
+        watchUpdateBookInfo(),
+        watchDeleteBookInfo(),
     ])
 
 }

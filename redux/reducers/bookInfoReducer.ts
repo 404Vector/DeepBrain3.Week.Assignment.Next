@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 export interface BookInfoType{
-
+    id: string;
     libName: String;
     bookName: String;
     author: String;
@@ -39,19 +39,34 @@ const bookInfoSlice = createSlice({
             state.loading = false;
         },
         
-        delBookInfoRequest(state: BookInfoState, {payload}){
+
+        updateBookInfoRequest(state: BookInfoState, payload) {
+            state.loading = true;
+        },
+        updateBookInfoSuccess(state: BookInfoState, { payload }) {
+            state.data = [...state.data, payload];
+            state.loading = false;
+        },
+        updateBookInfoFail(state: BookInfoState, { payload }) {
+            state.data = payload;
+            state.loading = false;
+        },
+        
+        deleteBookInfoRequest(state: BookInfoState, {payload}){
             alert('delBookInfoRequest')
             state.loading = false;
         },
-        delBookInfoSuccess(state: BookInfoState, {payload}){ 
+        deleteBookInfoSuccess(state: BookInfoState, {payload}){ 
             alert('delBookInfoSuccess')
+            state.data = [...state.data, payload];
             state.loading = false;
         },
-        delBookInfoFailure(state: BookInfoState, {payload}){ 
+        deleteBookInfoFailure(state: BookInfoState, {payload}){ 
             alert('delBookInfoFailure')
+            state.data = payload;
             state.loading = false;
-        }
-    }
+        },
+    },
 })
 const { reducer, actions } = bookInfoSlice
 export const bookInfoActions = actions

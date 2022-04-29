@@ -7,11 +7,7 @@ export default function BoardList() {
     const columns = ["Library Name", "Book Name", "Author", "Publisher", "Published Year", "Data Base Date"]
     const [data, setData] = useState([])
     const titleString = "서울특별시 강서구 강서구립도서관 신착도서 목록".normalize('NFC');
-    useEffect(() => {
-        axios.get('http://localhost:5050/api/board/list').then(res => {
-            setData(res.data.boards)
-        }).catch(err => { })
-    }, [])
+
 
     return (
         <table className={tableStyles.table}>

@@ -5,6 +5,7 @@ const headers = {
     "Content-Type": "application/json",
     Authorization: "JWT fefege..."
 }
+
 export interface BookInfoType {
     libName: string;
     bookName: string;
@@ -13,6 +14,7 @@ export interface BookInfoType {
     publishedYear: string;
     dataBaseData: string;
 }
+
 export const joinBookInfoApi = async (payload : {
     libName: String,
     bookName: String,
@@ -35,14 +37,38 @@ export const joinBookInfoApi = async (payload : {
     }
 }
 
-export const delBookInfoApi = async() =>{
+export const updateBookInfoApi = async (payload: {
+  id: string;
+  libName: String,
+  bookName: String,
+  author: String,
+  publisher: String,
+  publishedYear: String,
+  dataBaseData: String,
+}) => {
+  try {
+    const response: AxiosResponse<unknown, BookInfoType[]> = await axios.patch(
+            `${SERVER}/bookInfo/${payload.id}`,
+            payload,
+            { headers }
+        );
+        return response.data;
+    } catch (err) {
+        return err;
+  }
+};
+
+export const deleteBookInfoApi = async(payload: {
+    id: string;
+}) =>{
     try{
         const response: AxiosResponse<unknown, BookInfoType[]> = await axios.delete(
-            `${SERVER}/bookInfo/delBookInfoApi`,
-            {headers}
-        )
+            `${SERVER}/bookInfo/${payload.id}`,
+            { headers }
+        );
+        return response.data;
     }catch(err){
         return err;
     }
-}
+};
 

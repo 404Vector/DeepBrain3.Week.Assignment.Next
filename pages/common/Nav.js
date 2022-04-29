@@ -11,8 +11,8 @@ export default function Nav(){
   const [userUrls, setUserUrls] = useState([])
   const [userSubTitle, setUserSubTitle] = useState([])
 
-  const basicUrls = ["/","/board/refLink","/board/w1board","/board/w2board"]
-  const basicSubTitle = ["Home","Ref Link","Week1 Mission","Week2 Mission"]
+  const basicUrls = ["/","/board/refLink","/board/w1board","/board/w2board","/board/join"]
+  const basicSubTitle = ["Home","Ref Link","Week1 Mission","Week2 Mission","Week2 Book Join"]
 
 
   useEffect(()=>{
