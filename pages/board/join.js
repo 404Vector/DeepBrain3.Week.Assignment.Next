@@ -34,7 +34,7 @@ const JoinBookInfo = () => {
         publishedYear: "",
         dataBaseDate: "",
       });
-      window.location.href='/board/w2board'
+      window.location.href='/board/bookList'
     };
     return (
       <form onSubmit={addBookInfoHandler}>

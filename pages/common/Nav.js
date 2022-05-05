@@ -11,31 +11,40 @@ export default function Nav(){
   const [userUrls, setUserUrls] = useState([])
   const [userSubTitle, setUserSubTitle] = useState([])
 
-  const basicUrls = ["/","/board/refLink","/board/w1board","/board/w2board","/board/join"]
-  const basicSubTitle = ["Home","Ref Link","Week1 Mission","Week2 Mission","Week2 Book Join"]
+  const basicUrls = ["/","/board/bookList"]
+  const basicSubTitle = ["Home","Book Infos"]
 
 
   useEffect(()=>{
+    //TOPDO
     const loginUser = localStorage.getItem('loginUser')
     if(loginUser === null){
       setUserUrls(["/user/join","/user/login"])
       setUserSubTitle(["회원가입","로그인"])
 
     }else{
-      //setUserUrls(["/user/logout","/user/profile","/user/modifyUser","/user/withdrawUser","/user/getUsers"])
-      //setUserSubTitle(["로그아웃","프로필","회원수정","회원탈퇴","회원목록"])
       setUserUrls(["/user/logout","/user/profile","/user/userList"])
-      setUserSubTitle(["로그아웃","프로필","회원목록"])
+      setUserSubTitle(["Logout","Profile","UserList"])
     }
   },[])
+
+  const onNavigating = (nextLocation) =>{
+    window.location.href=nextLocation
+  }
 
   return (
     <table className={tableStyles.table}>
       <tbody>
         <tr>
             <td>
-              <SubMenu title={"기본"} urls={basicUrls} subTitles={basicSubTitle}/>
-              <SubMenu title={"사용자"} urls={userUrls} subTitles={userSubTitle}/>
+              {basicSubTitle.map(function(item, idx){
+                return (<>
+                  <button key={idx}
+                    onClick={(e)=>{e.preventDefault(); onNavigating(basicUrls[idx]);}} 
+                    children= {item}/>
+                </>)
+              })}
+              <SubMenu title={"User"} urls={userUrls} subTitles={userSubTitle}/>
             </td>
         </tr>
       </tbody>
@@ -52,15 +61,11 @@ const SubMenu = (props) => {
     const handleClose = () => {
       setAnchorEl(null);
     };
-    return <><Button
+    return <><button
           id="basic-button"
-          aria-controls={open ? 'basic-menu' : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? 'true' : undefined}
-          onClick={handleClick}
-        >
+          onClick={handleClick}>
           {props.title}
-        </Button>
+        </button>
         <Menu
           id="basic-menu"
           anchorEl={anchorEl}

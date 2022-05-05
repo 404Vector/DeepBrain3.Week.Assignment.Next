@@ -38,7 +38,7 @@ const updateBookInfo = ({data,id}) => {
 
   const returnToPrevPageHandler = (e) =>{
     e.preventDefault();
-    window.location.href='/board/w2board';
+    window.location.href='/board/bookList';
   }
 
   const updateBookInfoHandler = (e) => {
@@ -53,12 +53,12 @@ const updateBookInfo = ({data,id}) => {
         publishedYear: "",
         dataBaseDate: "",
     });
-    window.location.href='/board/w2board'
+    window.location.href='/board/bookList'
   };
   
   const deleteBookInfoHandler = (e) => {
     dispatch(bookInfoActions.deleteBookInfoRequest(bookInfo));
-    window.location.href='/board/w2board'
+    window.location.href='/board/bookList'
   }
 
   return (

@@ -3,6 +3,7 @@ import Link from "next/link"
 import tableStyles from "../../styles/table.module.css"
 import { useEffect, useState } from "react"
 import axios from "axios"
+import { Grid } from "@mui/material"
 
 export default function BoardList() {
     const columns = [
@@ -14,6 +15,7 @@ export default function BoardList() {
         "Data Base Date",
         "Edit",
     ]
+
     const [data, setData] = useState([]);
     const titleString = "서울특별시 강서구 강서구립도서관 신착도서 목록".normalize('NFC');
 
@@ -23,9 +25,15 @@ export default function BoardList() {
         .then(res => {
             setData(res.data)
         }).catch(err => { 
-            alert('w2board::'+err)
+            alert('board::'+err)
         })
     }, [])
+
+    const onJoinClicked = (e)=>{
+      e.preventDefault();
+      window.location.href='/board/join'
+    }
+
     return (
         <table className={tableStyles.table}>
             <thead>
@@ -37,6 +45,9 @@ export default function BoardList() {
                     </th>
                 </tr>
             </thead>
+                <div style={{margin:10, float:'inline-end'}}>
+                    <button children="Add book info" onClick={onJoinClicked}/>
+                </div>
             <tbody>
                 <tr>
                     {columns.map((column) => (

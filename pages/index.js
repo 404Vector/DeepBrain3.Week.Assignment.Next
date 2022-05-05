@@ -17,7 +17,7 @@ export default function Home()
     axios.get("http://localhost:5050/api/now").then((res) => {
       var data = res.data;
       console.log(data);
-      document.getElementById("timeZone").innerHTML = '<h1>현재시간: '+data.now+'<h1>'
+      document.getElementById("timeZone").innerHTML = '<h3>Server Connected, Server Time:'+data.now+'<h3>'
     });
   },[]);
   return (
@@ -26,7 +26,7 @@ export default function Home()
         <tr>
           <th>
             <h2>
-              HOME
+            서울특별시 강서구 강서구립도서관 신착도서 목록 서비스
             </h2>
           </th>
         </tr>
@@ -34,9 +34,8 @@ export default function Home()
       <tbody>
         <tr>
           <td>
-            <div id="timeZone">
-
-            </div>
+            <text>Server Status</text>
+            <text id="timeZone"></text>
           </td>
         </tr>
       </tbody>
