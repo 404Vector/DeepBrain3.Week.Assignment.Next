@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import Link from "next/link";
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -39,12 +39,16 @@ export default function Nav(){
             <td>
               {basicSubTitle.map(function(item, idx){
                 return (<>
-                  <button key={idx}
+                  <button key={idx} style={{margin:5, float:"left"}}
                     onClick={(e)=>{e.preventDefault(); onNavigating(basicUrls[idx]);}} 
                     children= {item}/>
                 </>)
               })}
-              <SubMenu title={"User"} urls={userUrls} subTitles={userSubTitle}/>
+              <div style={{margin:5, float:"right"}}>
+
+              <SubMenu title={"User"} 
+                        urls={userUrls} subTitles={userSubTitle}/>
+                </div>
             </td>
         </tr>
       </tbody>
@@ -61,7 +65,7 @@ const SubMenu = (props) => {
     const handleClose = () => {
       setAnchorEl(null);
     };
-    return <><button
+    return (<><button
           id="basic-button"
           onClick={handleClick}>
           {props.title}
@@ -78,5 +82,5 @@ const SubMenu = (props) => {
            {props.urls.map(function(url, i){
               return <MenuItem onClick={handleClose} key={i}><Link href={url} >{props.subTitles[i]}</Link></MenuItem>
             })}
-        </Menu></>
+        </Menu></>)
   }
