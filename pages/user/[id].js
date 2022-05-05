@@ -22,7 +22,7 @@ export default function Profile({ id }) {
 
     return (<>
         <h1>
-            사용자 프로필
+            {`Edit ${user.name}'s Profile`}
         </h1>
         <div>
             <label>

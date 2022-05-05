@@ -49,7 +49,8 @@ export const loginApi = async (payload : {
         )
         const loginUser = JSON.stringify(response.data)
         //alert('진행 6 : 응답성공 ' + JSON.stringify(loginUser))
-        localStorage.setItem("loginUser", loginUser)
+        sessionStorage.setItem("loginUser", loginUser)
+        
         return response.data
     } catch (err) {
         return err;

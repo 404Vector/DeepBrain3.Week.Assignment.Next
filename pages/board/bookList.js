@@ -3,7 +3,6 @@ import Link from "next/link"
 import tableStyles from "../../styles/table.module.css"
 import {useEffect, useState} from "react"
 import axios from "axios"
-import {Grid} from "@mui/material"
 
 export default function BoardList() {
     const columns = [
@@ -15,12 +14,11 @@ export default function BoardList() {
         "Data Base Date",
         "Edit"
     ]
-
     const [data, setData] = useState([]);
+    const [loginUser, setLoginUser] = useState(null);
     const titleString = "서울특별시 강서구 강서구립도서관 신착도서 목록".normalize(
         'NFC'
     );
-
     useEffect(() => {
         axios
             .get('http://localhost:5050/bookInfo/')
@@ -30,6 +28,11 @@ export default function BoardList() {
             .catch(err => {
                 alert('board::' + err)
             })
+            setLoginUser(sessionStorage.getItem('loginUser'))
+            //if(loginUser === null){
+            //    alert("You don't have a permission for this action.")
+            //    window.location.href = '/user/login'
+            //}
         }, [])
 
     const onJoinClicked = (e) => {
@@ -47,18 +50,25 @@ export default function BoardList() {
                         </h2>
                     </th>
                 </tr>
-            </thead>
-            <div
-                style={{
-                    margin: 10,
-                    float: 'inline-end'
-                }}>
-                <button children="Add book info" onClick={onJoinClicked}/>
-            </div>
-            <tbody>
                 <tr>
-                    {columns.map((column) => (<td key={column}>{column}</td>))}
+                    <th colSpan={7}>
+
+                        {loginUser !== null ? (
+                        <div style={{float:"right"}}>
+                            <button children="Add book info" onClick={onJoinClicked}/>
+                        </div>
+                        ) : (
+                        <></>
+                        )}
+                
+                    </th>
                 </tr>
+                <tr>
+                        {columns.map((column) => (<th key={column}>{column}</th>))}
+                </tr>
+            </thead>
+            <tbody>
+                
                 {
                     data.length == 0
                         ? (
@@ -75,7 +85,13 @@ export default function BoardList() {
                                 <td >{bookInfo.publishedYear}</td>
                                 <td >{bookInfo.dataBaseDate}</td>
                                 <td >
-                                    <Link href={`/board/${bookInfo._id}/`}>Edit</Link>
+                                    
+                                    {loginUser !== null ? (
+                                    <><Link href={`/board/${bookInfo._id}/`}>Edit</Link></>
+                                    ) : (
+                                    <>X</>
+                                    )}
+                                    
                                 </td>
                             </tr>
                         )))

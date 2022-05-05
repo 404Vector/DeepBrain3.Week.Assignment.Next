@@ -24,7 +24,11 @@ export const joinBookInfoApi = async (payload : {
     dataBaseDate: String,
 }) => {
     try {
-        
+        const loginUser = sessionStorage.getItem('loginUser')
+        if(loginUser === null){
+            alert("You don't have a permission for this action.")
+            return
+        }
         const response: AxiosResponse<unknown, BookInfoType[]> = await axios.post(
             `${SERVER}/bookInfo/join`,
             payload,
@@ -47,6 +51,11 @@ export const updateBookInfoApi = async (payload: {
   dataBaseDate: String,
 }) => {
   try {
+    const loginUser = sessionStorage.getItem('loginUser')
+    if(loginUser === null){
+        alert("You don't have a permission for this action.")
+        return
+    }
     const response: AxiosResponse<unknown, BookInfoType[]> = await axios.patch(
             `${SERVER}/bookInfo/${payload.id}`,
             payload,
@@ -62,6 +71,11 @@ export const deleteBookInfoApi = async(payload: {
     id: string;
 }) =>{
     try{
+        const loginUser = sessionStorage.getItem('loginUser')
+        if(loginUser === null){
+            alert("You don't have a permission for this action.")
+            return EvalError("permission denied")
+        }
         const response: AxiosResponse<unknown, BookInfoType[]> = await axios.delete(
             `${SERVER}/bookInfo/${payload.id}`,
             { headers }

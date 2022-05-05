@@ -53,16 +53,13 @@ const bookInfoSlice = createSlice({
         },
         
         deleteBookInfoRequest(state: BookInfoState, {payload}){
-            alert('delBookInfoRequest')
             state.loading = false;
         },
         deleteBookInfoSuccess(state: BookInfoState, {payload}){ 
-            alert('delBookInfoSuccess')
             state.data = [...state.data, payload];
             state.loading = false;
         },
         deleteBookInfoFailure(state: BookInfoState, {payload}){ 
-            alert('delBookInfoFailure')
             state.data = payload;
             state.loading = false;
         },

@@ -1,26 +1,34 @@
 .table {
-    margin: 10px 0;
-    font-size: 15px;
-    width: 900px;
+  margin: 10px 0;
+  font-size: 15px;
+  width: 900px;
+  border: 0px solid rgb(0, 85, 255);
+  }
+  .table thead th {
+    background-color: white;
+    color: rgb(0, 106, 255);
+    text-align: center;
+    font-weight: bold;
+    height: 20px;
+    border: 0px solid black;
+  }
+
+  .table td {
+    padding: 12px 15px;
+    border: 0px solid black;
+    text-align: center;
+  }
+  .table tbody tr {
     border: 1px solid black;
-    }
-    .table thead th {
-      background-color: white;
-      color: black;
-      text-align: center;
-      font-weight: bold;
-      height: 20px;
-      border: 1px solid black;
-    }
-  
-    .table td {
-      padding: 12px 15px;
-      border: 1px solid black;
-      text-align: center;
-    }
-    .table tbody tr {
-      border: 1px solid black;
-    }
-    .table tbody tr:last-of-type {
-      border: 1px solid black;
-    }
+  }
+  .table tbody tr td{
+    border: 0.1px solid rgb(198, 198, 198);
+    margin: 10;
+  }
+  .table tbody td:first-of-type{
+    background: rgb(197, 197, 197);
+    border: 0px solid black;
+  }
+  .table tbody tr:last-of-type {
+    border: 1px solid rgb(255, 0, 0);
+  }

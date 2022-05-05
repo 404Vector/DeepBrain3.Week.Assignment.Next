@@ -17,7 +17,7 @@ export default function Nav(){
 
   useEffect(()=>{
     //TOPDO
-    const loginUser = localStorage.getItem('loginUser')
+    const loginUser = sessionStorage.getItem('loginUser')
     if(loginUser === null){
       setUserUrls(["/user/join","/user/login"])
       setUserSubTitle(["회원가입","로그인"])
@@ -34,7 +34,7 @@ export default function Nav(){
 
   return (
     <table className={tableStyles.table}>
-      <tbody>
+      <thead>
         <tr>
             <td>
               {basicSubTitle.map(function(item, idx){
@@ -51,7 +51,7 @@ export default function Nav(){
                 </div>
             </td>
         </tr>
-      </tbody>
+      </thead>
     </table>
   );
 }

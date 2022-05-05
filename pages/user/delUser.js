@@ -5,7 +5,7 @@ import tableStyles from '../../styles/table.module.css'
 export default function  DelUser(){
     const [delUser, setDelUser] =useState({})
     useEffect(()=>{
-        const loginUser = localStorage.getItem('loginUser')
+        const loginUser = sessionStorage.getItem('loginUser')
         const user = JSON.parse(loginUser)
         setDelUser(user)
     }, [])

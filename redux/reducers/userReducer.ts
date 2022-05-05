@@ -53,29 +53,23 @@ const userSlice = createSlice({
             state.loading = false;
         },
         logoutRequest(state: UserState, {payload}){ 
-            alert('logout req logoutRequest')
             state.loading = false;
         },
         logoutSuccess(state: UserState, {payload}){ 
-            alert('logout req logoutSuccess')
             state.loading = false;
-            localStorage.clear()
+            sessionStorage.clear()
             window.location.href = '/'
         },
         logoutFailure(state: UserState, {payload}){ 
-            alert('logout req logoutFailure')
             state.loading = false;
         },
         delUserRequest(state: UserState, {payload}){ 
-            alert('logout req delUserRequest')
             state.loading = false;
         },
         delUserSuccess(state: UserState, {payload}){ 
-            alert('logout req delUserSuccess')
             state.loading = false;
         },
         delUserFailure(state: UserState, {payload}){ 
-            alert('logout req delUserFailure')
             state.loading = false;
         }
     }
