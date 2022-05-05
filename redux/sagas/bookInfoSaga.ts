@@ -13,7 +13,7 @@ interface BookInfoType{
         author: String,
         publisher: String,
         publishedYear: String,
-        dataBaseData: String,
+        dataBaseDate: String,
         address: String
     }
 }

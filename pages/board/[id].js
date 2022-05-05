@@ -25,7 +25,7 @@ const updateBookInfo = ({data,id}) => {
     author: data.author,
     publisher: data.publisher,
     publishedYear: data.publishedYear,
-    dataBaseData: data.dataBaseData,
+    dataBaseDate: data.dataBaseDate,
   });
 
   const dispatch = useDispatch();
@@ -35,6 +35,11 @@ const updateBookInfo = ({data,id}) => {
     const { name, value } = e.target;
     setBookInfo({ ...bookInfo, [name]: value });
   };
+
+  const returnToPrevPageHandler = (e) =>{
+    e.preventDefault();
+    window.location.href='/board/w2board';
+  }
 
   const updateBookInfoHandler = (e) => {
     e.preventDefault();
@@ -46,13 +51,14 @@ const updateBookInfo = ({data,id}) => {
         author: "",
         publisher: "",
         publishedYear: "",
-        dataBaseData: "",
+        dataBaseDate: "",
     });
-    
+    window.location.href='/board/w2board'
   };
   
   const deleteBookInfoHandler = (e) => {
     dispatch(bookInfoActions.deleteBookInfoRequest(bookInfo));
+    window.location.href='/board/w2board'
   }
 
   return (
@@ -61,7 +67,7 @@ const updateBookInfo = ({data,id}) => {
         <thead>
           <tr>
             <th colSpan={2}>
-              <h1>도서 목록 수정 / 삭제</h1>
+              <h1>도서 정보 수정 / 삭제</h1>
             </th>
           </tr>
         </thead>
@@ -114,14 +120,14 @@ const updateBookInfo = ({data,id}) => {
               <b>DB 등록일</b>
             </td>
             <td>
-              <input type="text" name="dataBaseData" value={bookInfo.dataBaseData} onChange={handleChange} />
+              <input type="text" name="dataBaseDate" value={bookInfo.dataBaseDate} onChange={handleChange} />
             </td>
           </tr>
           <tr>
-            <td colSpan={2}>
-              <button type="submit" style={{marginRight:1+'rem'}}>수정</button>
-              <button type="button" onClick={deleteBookInfoHandler}>삭제</button>
-              <br />
+            <td colSpan={3}>
+              <button type="button" onClick={returnToPrevPageHandler}>Return</button> 
+              <button type="submit" style={{margin:1+'rem'}}>Modify</button>
+              <button type="button" onClick={deleteBookInfoHandler}>Delete</button>
             </td>
           </tr>
         </tbody>

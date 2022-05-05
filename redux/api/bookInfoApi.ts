@@ -12,7 +12,7 @@ export interface BookInfoType {
     author: string;
     publisher: string;
     publishedYear: string;
-    dataBaseData: string;
+    dataBaseDate: string;
 }
 
 export const joinBookInfoApi = async (payload : {
@@ -21,7 +21,7 @@ export const joinBookInfoApi = async (payload : {
     author: String,
     publisher: String,
     publishedYear: String,
-    dataBaseData: String,
+    dataBaseDate: String,
 }) => {
     try {
         
@@ -44,7 +44,7 @@ export const updateBookInfoApi = async (payload: {
   author: String,
   publisher: String,
   publishedYear: String,
-  dataBaseData: String,
+  dataBaseDate: String,
 }) => {
   try {
     const response: AxiosResponse<unknown, BookInfoType[]> = await axios.patch(

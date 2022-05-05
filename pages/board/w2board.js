@@ -55,7 +55,7 @@ export default function BoardList() {
                             <td >{bookInfo.bookName}</td>
                             <td >{bookInfo.author}</td>
                             <td >{bookInfo.publisher}</td>
-                            <td >{bookInfo.publisherYear}</td>
+                            <td >{bookInfo.publishedYear}</td>
                             <td >{bookInfo.dataBaseDate}</td>
                             <td ><Link href={`/board/${bookInfo._id}/`}>Edit</Link></td>
                         </tr>

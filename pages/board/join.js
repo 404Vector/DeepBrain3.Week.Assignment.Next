@@ -11,7 +11,7 @@ const JoinBookInfo = () => {
         author: "",
         publisher: "",
         publishedYear: "",
-        dataBaseData: "",
+        dataBaseDate: "",
     });
   
     const dispatch = useDispatch();
@@ -32,8 +32,9 @@ const JoinBookInfo = () => {
         author: "",
         publisher: "",
         publishedYear: "",
-        dataBaseData: "",
+        dataBaseDate: "",
       });
+      window.location.href='/board/w2board'
     };
     return (
       <form onSubmit={addBookInfoHandler}>
@@ -94,7 +95,7 @@ const JoinBookInfo = () => {
               <b>DB 등록일</b>
             </td>
             <td>
-              <input type="text" name="dataBaseData" value={bookInfo.dataBaseData} onChange={handleChange} />
+              <input type="text" name="dataBaseDate" value={bookInfo.dataBaseDate} onChange={handleChange} />
             </td>
           </tr>
           <tr>
